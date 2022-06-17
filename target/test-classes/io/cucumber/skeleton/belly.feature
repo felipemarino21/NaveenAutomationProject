@@ -33,7 +33,7 @@ Feature: ECommerce Functions
     Given User is on the homepage
     When User types in the searchbar the word "apple"
     And Clicks the search button
-    Then User sees all the results contaning "Apple" in the name
+    Then User sees all the results containing "Apple" in the name
 
   Scenario: Hover on categories shows elements in the homepage
     Given User is on the homepage
@@ -57,6 +57,13 @@ Feature: ECommerce Functions
     And User clicks on the cart
     And User clicks on view cart
     Then User sees "3" MacBook  in the cart
+
+  Scenario: Change in currency
+    Given User is on the homepage
+    When User changes currency from dollars to euros
+    Then User sees all the prices in euros
+
+
 
 
 

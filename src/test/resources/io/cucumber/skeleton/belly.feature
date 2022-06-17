@@ -58,7 +58,12 @@ Feature: ECommerce Functions
     And User clicks on view cart
     Then User sees "3" MacBook  in the cart
 
-    
+  Scenario: Change in currency
+    Given User is on the homepage
+    When User changes currency from dollars to euros
+    Then User sees all the prices in euros
+
+
 
 
 
