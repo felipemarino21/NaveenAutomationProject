@@ -1,8 +1,6 @@
 package io.cucumber.skeleton;
 
-import Pages.HomePage;
-import Pages.LoginPage;
-import Pages.RegistrationPage;
+import Pages.*;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
@@ -13,7 +11,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -32,17 +29,25 @@ public class StepDefinitions {
     public RegistrationPage registrationPage;
 
     public HomePage homePage;
-
+    public SearchPage searchPage;
+    public CartPage cartPage;
+    public AccountPage accountPage;
     @Before
     public void setup()  {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\User\\Documents\\asd\\skeleton\\src\\test\\resources\\chromedriver.exe");
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        a= new Actions(driver);
         wait = new WebDriverWait(driver,Duration.of(5,SECONDS));
+
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
         loginPage = new LoginPage(driver);
         registrationPage = new RegistrationPage(driver);
         homePage = new HomePage(driver);
+        searchPage= new SearchPage(driver);
+        cartPage = new CartPage(driver);
+        accountPage = new AccountPage(driver);
     }
 
     @After
@@ -103,7 +108,6 @@ public class StepDefinitions {
     public void user_sees_registration_error()  {
         String expected = "Warning: E-Mail Address is already registered!";
         registrationPage.getError(expected);
-
     }
     @Given("User is on the homepage")
     public void user_is_on_the_homepage() {
@@ -118,94 +122,67 @@ public class StepDefinitions {
         homePage.clickSearch();
     }
     @Then("User sees all the results containing {string} in the name")
-    public void user_sees_all_the_results_containing_in_the_name(String name) {
-
-        List<WebElement> list = driver.findElements(By.xpath("//div[@class='caption']/h4/a"));
-        for (WebElement webElement : list) {
-            String confirmation = webElement.getText();
-            Assert.assertTrue(confirmation.contains(name));
-        }
+    public void user_sees_all_the_results_containing_in_the_name(String keyword) {
+        searchPage.compareResults(keyword);
     }
 
     @When("User hovers with the mouse over the MP3 players category")
     public void user_hovers_with_the_mouse_over_the_mp3_players_category() {
-        a= new Actions(driver);
-        WebElement ele = driver.findElement(By.xpath("//*[contains(text(),'MP3')]"));
-        a.moveToElement(ele).build().perform();
+        homePage.hoverElement(a);
     }
 
     @Then("User sees all the elements in that category")
     public void user_sees_all_the_elements_in_that_category() {
-        List<WebElement> list = driver.findElements(By.xpath("//*[contains(text(),'MP3')]/following-sibling::div/div/ul/li"));
-        for (WebElement webElement : list) {
-            boolean confirmation = webElement.isDisplayed();
-            Assert.assertTrue(confirmation);
-        }
+        homePage.checkSubCategory();
     }
 
     @When("User adds a Macbook to cart")
     public void user_adds_a_macbook_to_cart() {
-        driver.findElement(By.xpath("((//*[.='MacBook']/parent::div/parent::div)/div[@class='button-group']/button)[1]")).click();
+        homePage.addItemToCart();
     }
     @When("User clicks on the cart")
     public void user_clicks_on_the_cart() {
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='btn btn-inverse btn-block btn-lg dropdown-toggle']")));
-        driver.findElement(By.xpath("//button[@class='btn btn-inverse btn-block btn-lg dropdown-toggle']")).click();
+        homePage.clickCart(wait);
     }
     @Then("User sees the Macbook in the cart")
     public void user_sees_the_macbook_in_the_cart() {
-        boolean condition = driver.findElement(By.xpath("//ul[@class='dropdown-menu pull-right']//a[contains(text(),'MacBook')]")).isDisplayed();
-        Assert.assertTrue(condition);
+        homePage.checkItemInCart(wait);
     }
 
     @Then("User sees the add to cart notification")
     public void user_sees_the_add_to_cart_notification() {
-        boolean condition = driver.findElement(By.xpath("//div[@class='alert alert-success alert-dismissible']/i")).isDisplayed();
-        Assert.assertTrue(condition);
+        homePage.checkCartNotification();
     }
 
     @When("User adds {string} Macbook to cart")
     public void user_adds_macbook_to_cart(String string) {
         int n= Integer.parseInt(string);
         for(int i=0; i<n; i++){
-            driver.findElement(By.xpath("((//*[.='MacBook']/parent::div/parent::div)/div[@class='button-group']/button)[1]")).click();
+            homePage.addItemToCart();
         }
     }
     @When("User clicks on view cart")
     public void user_clicks_on_view_cart() {
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//p/a/strong)[1]")));
-        driver.findElement(By.xpath("(//p/a/strong)[1]")).click();
+        homePage.clickViewCart(wait);
     }
     @Then("User sees {string} MacBook  in the cart")
-    public void user_sees_mac_book_in_the_cart(String string){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@class='form-control'])[1]")));
-        int n= Integer.parseInt(string);
-        int value = Integer.parseInt(driver.findElement(By.xpath("(//input[@class='form-control'])[1]")).getAttribute("value"));
-        Assert.assertEquals(value,n);
+    public void user_sees_mac_book_in_the_cart(String number){
+
+        cartPage.compareQuantity(wait,number);
     }
-
-
-
     @Then("User sees account page")
     public void user_sees_account_page() {
-        String url = driver.getCurrentUrl();
-        Assert.assertEquals(url,"https://naveenautomationlabs.com/opencart/index.php?route=account/account");
+        String expected = "https://naveenautomationlabs.com/opencart/index.php?route=account/account";
+        accountPage.compareUrl(expected);
     }
 
     @When("User changes currency from dollars to euros")
     public void user_changes_currency_from_dollars_to_euros() {
-        driver.findElement(By.id("form-currency")).click();
-        driver.findElement(By.xpath("//button[@name='EUR']")).click();
-
+        homePage.changeCurrencyToEuros();
     }
     @Then("User sees all the prices in euros")
     public void user_sees_all_the_prices_in_euros() {
-         List<WebElement> list = driver.findElements(By.xpath("//p[@class='price']"));
-        for (WebElement webElement : list) {
-            String currency = webElement.getText();
-            Assert.assertTrue(currency.contains("€"));
-        }
-
+         homePage.CheckIfCurrencyIsEuros();
     }
 
 }

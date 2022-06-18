@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4d801f6-3073-4b66-ad20-fcef9696b264" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Pages/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Pages/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Pages/SearchPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Pages/SearchPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/io/cucumber/skeleton/StepDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/io/cucumber/skeleton/StepDefinitions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/io/cucumber/skeleton/belly.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/io/cucumber/skeleton/belly.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/io/cucumber/skeleton/StepDefinitions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/io/cucumber/skeleton/StepDefinitions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/io/cucumber/skeleton/belly.feature" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/io/cucumber/skeleton/belly.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +64,7 @@
       <recent name="cucumberOptions" />
     </key>
   </component>
-  <component name="RunManager" selected="Cucumber Java.Scenario: User sign up with new user">
+  <component name="RunManager" selected="Cucumber Java.Scenario: Item is added multiple times to cart">
     <configuration name="Feature: belly" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/io/cucumber/skeleton/belly.feature" />
@@ -83,15 +84,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Change in currency" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Element added to cart is present in the cart" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/io/cucumber/skeleton/belly.feature" />
       <option name="GLUE" value="io.cucumber.skeleton" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="cucumber-java-skeleton" />
-      <option name="NAME_FILTER" value="^Change in currency$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Change in currency$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Change in currency" />
+      <option name="NAME_FILTER" value="^Element added to cart is present in the cart$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Element added to cart is present in the cart$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Element added to cart is present in the cart" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -103,15 +104,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Correct homepage login" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Hover on categories shows elements in the homepage" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/io/cucumber/skeleton/belly.feature" />
       <option name="GLUE" value="io.cucumber.skeleton" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="cucumber-java-skeleton" />
-      <option name="NAME_FILTER" value="^Correct homepage login$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Correct homepage login$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Correct homepage login" />
+      <option name="NAME_FILTER" value="^Hover on categories shows elements in the homepage$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Hover on categories shows elements in the homepage$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Hover on categories shows elements in the homepage" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -123,15 +124,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Incorrect homepage login" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Item is added multiple times to cart" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/io/cucumber/skeleton/belly.feature" />
       <option name="GLUE" value="io.cucumber.skeleton" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="cucumber-java-skeleton" />
-      <option name="NAME_FILTER" value="^Incorrect homepage login$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Incorrect homepage login$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Incorrect homepage login" />
+      <option name="NAME_FILTER" value="^Item is added multiple times to cart$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Item is added multiple times to cart$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Item is added multiple times to cart" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -165,11 +166,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Cucumber Java.Scenario: User sign up with new user" />
-        <item itemvalue="Cucumber Java.Scenario: Incorrect homepage login" />
-        <item itemvalue="Cucumber Java.Scenario: Change in currency" />
-        <item itemvalue="Cucumber Java.Scenario: Correct homepage login" />
+        <item itemvalue="Cucumber Java.Scenario: Item is added multiple times to cart" />
+        <item itemvalue="Cucumber Java.Scenario: Element added to cart is present in the cart" />
         <item itemvalue="Cucumber Java.Feature: belly" />
+        <item itemvalue="Cucumber Java.Scenario: Hover on categories shows elements in the homepage" />
+        <item itemvalue="Cucumber Java.Scenario: User sign up with new user" />
       </list>
     </recent_temporary>
   </component>
