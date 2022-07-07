@@ -70,7 +70,7 @@ public class StepDefinitions {
         registrationPage.clickCheck();
         registrationPage.clickSubmit();
     }
-    @When("^Signs up with new (.+) and (.+) random (.+)  (.+) (.+)$")
+    @When("Signs up with new {string} and {string} random {string}  {string} {string}")
     public void Signs_up_with_new_and_random(String firstname, String lastname, String email, String phone, String password) {
         registrationPage.inputFirstName(firstname);
         registrationPage.inputLastName(lastname);

@@ -15,7 +15,7 @@ Feature: User account Functions
 
   Scenario Outline: User sign up with new user
     And User clicks continue in the registration menu
-    When Signs up with new <firstname> and <lastname> random <email>  <phone> <password>
+    When Signs up with new "<firstname>" and "<lastname>" random "<email>"  "<phone>" "<password>"
     Then User sees registration confirmation
     Examples:
       | firstname | lastname | email          | phone   | password   |
