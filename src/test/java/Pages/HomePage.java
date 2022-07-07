@@ -14,28 +14,29 @@ public class HomePage {
     public WebDriver driver;
 
     public HomePage(WebDriver driver){
+
         this.driver = driver;
     }
 
-    By searchBar = By.name("search");
-    By searchButton = By.xpath("//button[@class='btn btn-default btn-lg']");
+    private By searchBar = By.name("search");
+    private By searchButton = By.xpath("//button[@class='btn btn-default btn-lg']");
 
-    By category = By.xpath("//*[contains(text(),'MP3')]");
+    private By category = By.xpath("//*[contains(text(),'MP3')]");
 
-    By subCategory = By.xpath("//*[contains(text(),'MP3')]/following-sibling::div/div/ul/li");
-    By item = By.xpath("((//*[.='MacBook']/parent::div/parent::div)/div[@class='button-group']/button)[1]");
-    By cart = By.xpath("//button[@class='btn btn-inverse btn-block btn-lg dropdown-toggle']");
+    private By subCategory = By.xpath("//*[contains(text(),'MP3')]/following-sibling::div/div/ul/li");
+    private By item = By.xpath("((//*[.='MacBook']/parent::div/parent::div)/div[@class='button-group']/button)[1]");
+    private By cart = By.xpath("//button[@class='btn btn-inverse btn-block btn-lg dropdown-toggle']");
 
-    By itemInCart = By.xpath("//ul[@class='dropdown-menu pull-right']//a[contains(text(),'MacBook')]");
+    private By itemInCart = By.xpath("//ul[@class='dropdown-menu pull-right']//a[contains(text(),'MacBook')]");
 
-    By cartNotification = By.xpath("//div[@class='alert alert-success alert-dismissible']/i");
+    private By cartNotification = By.xpath("//div[@class='alert alert-success alert-dismissible']/i");
 
-    By viewCart = By.xpath("(//p/a/strong)[1]");
+    private By viewCart = By.xpath("(//p/a/strong)[1]");
 
-    By currencyEuros = By.xpath("//button[@name='EUR']");
+    private By currencyEuros = By.xpath("//button[@name='EUR']");
 
-    By currencyButton = By.id("form-currency");
-    By prices = By.xpath("//p[@class='price']");
+    private By currencyButton = By.id("form-currency");
+    private By prices = By.xpath("//p[@class='price']");
 
     public void searchItem(String keyword){
         driver.findElement(searchBar).sendKeys(keyword);

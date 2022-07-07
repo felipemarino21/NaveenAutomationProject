@@ -10,7 +10,8 @@ public class AccountPage {
     public AccountPage(WebDriver driver){
         this.driver = driver;
     }
-    public void compareUrl(String expected){
+    public void compareUrl(){
+        String expected = "https://naveenautomationlabs.com/opencart/index.php?route=account/account";
         String url = driver.getCurrentUrl();
         Assert.assertEquals(url,expected);
     }

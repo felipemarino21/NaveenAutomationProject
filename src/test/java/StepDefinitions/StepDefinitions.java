@@ -1,32 +1,18 @@
 package StepDefinitions;
 
 import Pages.*;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-
-
-import java.io.FileInputStream;
-import java.io.IOException;
+import utils.TestContextSetup;
 import java.time.Duration;
-import java.util.List;
-import java.util.Properties;
 
 import static java.time.temporal.ChronoUnit.SECONDS;
 
 
 public class StepDefinitions {
-    public WebDriver driver;
     public WebDriverWait wait;
     public Actions a;
     public LoginPage loginPage;
@@ -36,40 +22,24 @@ public class StepDefinitions {
     public SearchPage searchPage;
     public CartPage cartPage;
     public AccountPage accountPage;
-    @Before
-    public void setup() throws IOException {
-        FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\global.properties");
-        Properties prop = new Properties();
-        prop.load(fis);
-        if (prop.getProperty("browser").equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\chromedriver.exe");
-            driver = new ChromeDriver();
-        } else if (prop.getProperty("browser").equalsIgnoreCase("edge")) {
-            System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\msedgedriver.exe");
-            driver = new EdgeDriver();
-        }
-        a= new Actions(driver);
-        wait = new WebDriverWait(driver,Duration.of(5,SECONDS));
 
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+    TestContextSetup testContextSetup;
 
-        loginPage = new LoginPage(driver);
-        registrationPage = new RegistrationPage(driver);
-        homePage = new HomePage(driver);
-        searchPage= new SearchPage(driver);
-        cartPage = new CartPage(driver);
-        accountPage = new AccountPage(driver);
+    public StepDefinitions(TestContextSetup testContextSetup) {
+        this.testContextSetup = testContextSetup;
+        this.loginPage = new LoginPage(this.testContextSetup.driver);
+        this.registrationPage = new RegistrationPage(this.testContextSetup.driver);
+        this.homePage = new HomePage(this.testContextSetup.driver);
+        this.searchPage = new SearchPage(this.testContextSetup.driver);
+        this.cartPage = new CartPage(this.testContextSetup.driver);
+        this.accountPage = new AccountPage(this.testContextSetup.driver);
+        this.a = new Actions(testContextSetup.driver);
+        wait = new WebDriverWait(testContextSetup.driver, Duration.of(5,SECONDS));
     }
 
-    @After
-    public void teardown() {
-        // closes all the browser windows opened by web driver
-        driver.quit();
-    }
     @Given("User is on the login page")
     public void user_is_on_the_login_page() {
-        driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
+        testContextSetup.driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
 
     }
     @When("User logs in with username {string} and password {string}")
@@ -118,12 +88,11 @@ public class StepDefinitions {
     }
     @Then("^User sees registration error$")
     public void user_sees_registration_error()  {
-        String expected = "Warning: E-Mail Address is already registered!";
-        registrationPage.getError(expected);
+        registrationPage.getError();
     }
     @Given("User is on the homepage")
     public void user_is_on_the_homepage() {
-        driver.get("https://naveenautomationlabs.com/opencart/index.php?route=common/home");
+        testContextSetup.driver.get("https://naveenautomationlabs.com/opencart/index.php?route=common/home");
     }
     @When("User types in the searchbar the word {string}")
     public void user_types_in_the_searchbar_the_word(String keyword) {
@@ -184,8 +153,8 @@ public class StepDefinitions {
     }
     @Then("User sees account page")
     public void user_sees_account_page() {
-        String expected = "https://naveenautomationlabs.com/opencart/index.php?route=account/account";
-        accountPage.compareUrl(expected);
+
+        accountPage.compareUrl();
     }
 
     @When("User changes currency from dollars to euros")

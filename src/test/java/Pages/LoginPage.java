@@ -11,14 +11,14 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    By email = By.id("input-email");
-    By password = By.id("input-password");
+    private By email = By.id("input-email");
+    private By password = By.id("input-password");
 
-    By loginButton = By.xpath("//input[@type='submit']");
+    private By loginButton = By.xpath("//input[@type='submit']");
 
-    By errorMessage = By.xpath("//div[@class='alert alert-danger alert-dismissible']");
+    private By errorMessage = By.xpath("//div[@class='alert alert-danger alert-dismissible']");
 
-    By registrationButton = By.xpath("//a[@class='btn btn-primary']");
+    private By registrationButton = By.xpath("//a[@class='btn btn-primary']");
     public void inputEmail(String user){
         driver.findElement(email).sendKeys(user);
     }

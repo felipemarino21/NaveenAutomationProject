@@ -5,7 +5,7 @@ Feature: User account Functions
   Background:
     Given User is on the login page
 
-  Scenario: Incorrect homepage login
+  Scenario: Incorrect  login
     When User logs in with username "1012233567" and password "zapatos123"
     Then User sees error message
 
@@ -23,7 +23,7 @@ Feature: User account Functions
 
   Scenario Outline: User sign up with already existing user
     And User clicks continue in the registration menu
-    When User signs up with <firstname> <lastname> <email> <phone> <password>
+    When User signs up with "<firstname>" "<lastname>" "<email>" "<phone>" "<password>"
     Then User sees registration error
     Examples:
       | firstname | lastname | email          | phone   | password   |

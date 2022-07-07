@@ -8,6 +8,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
 public class TestBase {
     public WebDriver driver;
@@ -15,47 +16,28 @@ public class TestBase {
 
     public WebDriver WebDriverManager() throws IOException {
 
-        Properties prop = getProperties();
-        String url = prop.getProperty("url");
+        FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\global.properties");
+        Properties prop = new Properties();
+        prop.load(fis);
+
         if (driver == null) {
+
             if (prop.getProperty("browser").equalsIgnoreCase("chrome")) {
-                System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver/chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\chromedriver.exe");
                 driver = new ChromeDriver();
+            } else if (prop.getProperty("browser").equalsIgnoreCase("edge")) {
+                System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\msedgedriver.exe");
+                driver = new EdgeDriver();
+            }
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                 driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
                 driver.manage().deleteAllCookies();
-                driver.get(url);
-            } else if (prop.getProperty("browser").equalsIgnoreCase("firefox")) {
-                // Mozilla Firefox Code
-            } else if (prop.getProperty("browser").equalsIgnoreCase("edge")) {
-                // Microsoft Edge Code
-            }
-        }
+                driver.manage().window().maximize();
 
+        }
         return driver;
     }
 
-    public Properties getProperties() throws IOException {
-        FileInputStream fis = new FileInputStream(path + "\\src\\test\\resources\\global.properties");
-        Properties prop = new Properties();
-        prop.load(fis);
-        return prop;
-    }
-
-    public void setProperties(String propertie, String value) {
-        Properties prop = new Properties();
-        try {
-            final FileInputStream fis = new FileInputStream(path + "\\src\\test\\resources\\global.properties");
-            prop.load(fis);
-            fis.close();
-            prop.setProperty(propertie, value);
-            final FileOutputStream output = new FileOutputStream(path + "\\src\\test\\resources\\global.properties");
-            prop.store(output, "");
-            output.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
 
 
 }

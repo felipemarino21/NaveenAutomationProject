@@ -11,16 +11,16 @@ public class RegistrationPage {
         this.driver = driver;
     }
 
-    By firstName = By.id("input-firstname");
-    By lastName = By.id("input-lastname");
-    By emailLoc = By.id("input-email");
-    By telephone = By.id("input-telephone");
-    By password = By.id("input-password");
-    By confirm = By.id("input-confirm");
-    By checkTerms = By.xpath("//input[@type='checkbox']");
-    By submit = By.xpath("//input[@type='submit']");
-    By confirmation = By.xpath("//div[@id='content']/h1");
-    By registrationError = By.xpath("//div[@class='alert alert-danger alert-dismissible']");
+    private By firstName = By.id("input-firstname");
+    private By lastName = By.id("input-lastname");
+    private By emailLoc = By.id("input-email");
+    private By telephone = By.id("input-telephone");
+    private By password = By.id("input-password");
+    private By confirm = By.id("input-confirm");
+    private By checkTerms = By.xpath("//input[@type='checkbox']");
+    private By submit = By.xpath("//input[@type='submit']");
+    private By confirmation = By.xpath("//div[@id='content']/h1");
+    private By registrationError = By.xpath("//div[@class='alert alert-danger alert-dismissible']");
 
     public void inputFirstName(String firstname){
         driver.findElement(firstName).sendKeys(firstname);
@@ -53,7 +53,8 @@ public class RegistrationPage {
         String actual = driver.findElement(confirmation).getText();
         Assert.assertEquals(actual,expected);
     }
-    public void getError(String expected){
+    public void getError(){
+        String expected = "Warning: E-Mail Address is already registered!";
         String actual = driver.findElement(registrationError).getText();
         Assert.assertEquals(actual,expected);
     }

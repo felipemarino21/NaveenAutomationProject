@@ -15,7 +15,7 @@ public class SearchPage {
         this.driver = driver;
     }
 
-    By results = By.xpath("//div[@class='caption']/h4/a");
+    private By results = By.xpath("//div[@class='caption']/h4/a");
 
 
     public void compareResults(String name){

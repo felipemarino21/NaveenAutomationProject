@@ -1,4 +1,4 @@
-package io.cucumber.skeleton;
+package app;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
