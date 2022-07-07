@@ -9,8 +9,6 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.TestContextSetup;
 
 import java.io.File;
@@ -18,8 +16,6 @@ import java.io.IOException;
 
 
 public class Hooks {
-    public WebDriverWait wait;
-    public Actions a;
     public LoginPage loginPage;
     public RegistrationPage registrationPage;
 
@@ -35,8 +31,6 @@ public class Hooks {
     @Before
     public void setup() {
 
-        //a= new Actions(testContextSetup.driver);
-        //wait = new WebDriverWait(testContextSetup.driver, Duration.of(5,SECONDS));
         loginPage = new LoginPage(testContextSetup.driver);
         registrationPage = new RegistrationPage(testContextSetup.driver);
         homePage = new HomePage(testContextSetup.driver);

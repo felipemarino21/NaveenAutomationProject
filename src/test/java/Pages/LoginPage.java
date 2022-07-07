@@ -28,7 +28,8 @@ public class LoginPage {
     public void clickLogin(){
         driver.findElement(loginButton).click();
     }
-    public void checkError(String expected){
+    public void checkError(){
+        String expected = "Warning: No match for E-Mail Address and/or Password.";
         String error = driver.findElement(errorMessage).getText();
         Assert.assertEquals(error,expected);
     }

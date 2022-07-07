@@ -34,7 +34,7 @@ public class StepDefinitions {
         this.cartPage = new CartPage(this.testContextSetup.driver);
         this.accountPage = new AccountPage(this.testContextSetup.driver);
         this.a = new Actions(testContextSetup.driver);
-        wait = new WebDriverWait(testContextSetup.driver, Duration.of(5,SECONDS));
+        this.wait = new WebDriverWait(testContextSetup.driver, Duration.of(5,SECONDS));
     }
 
     @Given("User is on the login page")
@@ -51,8 +51,8 @@ public class StepDefinitions {
 
     @Then("User sees error message")
     public void user_sees_error_message() {
-        String expected = "Warning: No match for E-Mail Address and/or Password.";
-        loginPage.checkError(expected);
+
+        loginPage.checkError();
     }
 
     @Given("User clicks continue in the registration menu")
