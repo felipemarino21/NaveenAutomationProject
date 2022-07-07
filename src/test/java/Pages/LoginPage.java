@@ -3,6 +3,7 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import utils.TextConstants;
 
 public class LoginPage {
     public WebDriver driver;
@@ -29,9 +30,8 @@ public class LoginPage {
         driver.findElement(loginButton).click();
     }
     public void checkError(){
-        String expected = "Warning: No match for E-Mail Address and/or Password.";
         String error = driver.findElement(errorMessage).getText();
-        Assert.assertEquals(error,expected);
+        Assert.assertEquals(error,TextConstants.LoginWarning);
     }
     public void clickContinue(){
         driver.findElement(registrationButton).click();

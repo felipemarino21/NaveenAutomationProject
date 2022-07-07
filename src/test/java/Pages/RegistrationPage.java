@@ -3,6 +3,7 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import utils.TextConstants;
 
 public class RegistrationPage {
     public WebDriver driver;
@@ -49,14 +50,14 @@ public class RegistrationPage {
         String[] parts = baseEmail.split("@");
         return parts[0] + aux + "@" + parts[1];
     }
-    public void getConfirmation(String expected){
+    public void getConfirmation(){
         String actual = driver.findElement(confirmation).getText();
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual, TextConstants.CreateConfirmation);
     }
     public void getError(){
-        String expected = "Warning: E-Mail Address is already registered!";
+
         String actual = driver.findElement(registrationError).getText();
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual,TextConstants.EmailWarning);
     }
 
 }

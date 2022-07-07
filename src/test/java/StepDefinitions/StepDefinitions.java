@@ -83,8 +83,8 @@ public class StepDefinitions {
     }
     @Then("User sees registration confirmation")
     public void user_sees_registration_confirmation() {
-        String expected = "Your Account Has Been Created!";
-        registrationPage.getConfirmation(expected);
+
+        registrationPage.getConfirmation();
     }
     @Then("^User sees registration error$")
     public void user_sees_registration_error()  {

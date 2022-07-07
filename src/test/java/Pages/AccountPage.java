@@ -2,6 +2,7 @@ package Pages;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import utils.TextConstants;
 
 public class AccountPage {
     public WebDriver driver;
@@ -11,9 +12,8 @@ public class AccountPage {
         this.driver = driver;
     }
     public void compareUrl(){
-        String expected = "https://naveenautomationlabs.com/opencart/index.php?route=account/account";
         String url = driver.getCurrentUrl();
-        Assert.assertEquals(url,expected);
+        Assert.assertEquals(url,TextConstants.AccountUrl);
     }
 
 }
