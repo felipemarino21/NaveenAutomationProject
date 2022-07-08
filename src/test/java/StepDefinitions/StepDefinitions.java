@@ -166,7 +166,7 @@ public class StepDefinitions {
     }
 
     @Given("User is on the homepage")
-    public void userIsOnTheHomepage() {
-        testContextSetup.driver.get("https://naveenautomationlabs.com/opencart/index.php?route=common/home");
+    public void userIsOnTheHomepage() throws IOException {
+        homePage.getHomePage();
     }
 }
