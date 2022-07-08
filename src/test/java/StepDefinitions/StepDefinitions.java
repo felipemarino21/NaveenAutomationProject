@@ -7,6 +7,8 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.TestContextSetup;
+
+import java.io.IOException;
 import java.time.Duration;
 
 import static java.time.temporal.ChronoUnit.SECONDS;
@@ -38,10 +40,10 @@ public class StepDefinitions {
     }
 
     @Given("User is on the login page")
-    public void user_is_on_the_login_page() {
-        testContextSetup.driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
-
+    public void user_is_on_the_login_page() throws IOException {
+        loginPage.getLoginPage();
     }
+
     @When("User logs in with username {string} and password {string}")
     public void user_logs_in_with_username_and_password(String user, String pass) {
         loginPage.inputEmail(user);
@@ -90,10 +92,7 @@ public class StepDefinitions {
     public void user_sees_registration_error()  {
         registrationPage.getError();
     }
-    @Given("User is on the homepage")
-    public void user_is_on_the_homepage() {
-        testContextSetup.driver.get("https://naveenautomationlabs.com/opencart/index.php?route=common/home");
-    }
+
     @When("User types in the searchbar the word {string}")
     public void user_types_in_the_searchbar_the_word(String keyword) {
         homePage.searchItem(keyword);
@@ -166,4 +165,8 @@ public class StepDefinitions {
          homePage.CheckIfCurrencyIsEuros();
     }
 
+    @Given("User is on the homepage")
+    public void userIsOnTheHomepage() throws IOException {
+        homePage.getHomePage();
+    }
 }
