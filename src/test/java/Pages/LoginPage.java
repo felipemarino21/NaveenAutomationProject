@@ -4,11 +4,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import utils.TextConstants;
+import utils.UrlString;
+
+import java.io.IOException;
+
 
 public class LoginPage {
     public WebDriver driver;
+    public UrlString urlString = new UrlString();
 
     public LoginPage(WebDriver driver){
+
         this.driver = driver;
     }
 
@@ -35,6 +41,10 @@ public class LoginPage {
     }
     public void clickContinue(){
         driver.findElement(registrationButton).click();
+    }
+
+    public void getLoginPage() throws IOException {
+        driver.get(UrlString.propertiesas("urlLogin"));
     }
 
 

@@ -7,11 +7,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
+import utils.UrlString;
+import java.io.IOException;
 import java.util.List;
 
 public class HomePage {
     public WebDriver driver;
+    public UrlString urlString = new UrlString();
 
     public HomePage(WebDriver driver){
 
@@ -83,6 +85,9 @@ public class HomePage {
             String currency = webElement.getText();
             Assert.assertTrue(currency.contains("€"));
         }
+    }
+    public void getHomePage() throws IOException {
+        driver.get(UrlString.propertiesas("urlHome"));
     }
 
 

@@ -10,15 +10,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
 public class TestBase {
+
     public WebDriver driver;
-    public String path = System.getProperty("user.dir");
+
+
 
     public WebDriver WebDriverManager() throws IOException {
 
         FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\global.properties");
         Properties prop = new Properties();
         prop.load(fis);
-
         if (driver == null) {
 
             if (prop.getProperty("browser").equalsIgnoreCase("chrome")) {
@@ -36,6 +37,9 @@ public class TestBase {
         }
         return driver;
     }
+
+
+
 
 
 

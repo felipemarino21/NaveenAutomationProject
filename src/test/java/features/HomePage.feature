@@ -5,8 +5,6 @@ Feature: ECommerce Functions
   Background:
     Given User is on the homepage
 
-
-
   Scenario: Search on homepage
     When User types in the searchbar the word "apple"
     And Clicks the search button
